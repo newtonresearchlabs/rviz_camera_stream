@@ -58,8 +58,10 @@
 #include <sensor_msgs/image_encodings.h>
 #include <string>
 #include <tf/transform_listener.h>
-
 #include "rviz_camera_stream/camera_display.h"
+
+int 	rviz::CameraPub::count_ 		= 0;
+
 
 namespace video_export
 {
@@ -208,6 +210,7 @@ CameraPub::CameraPub()
   : Display()
   , camera_trigger_name_("camera_trigger")
   , nh_()
+  , trigger_activated_(false)
 {
   topic_property_ = new RosTopicProperty("Image Topic", "",
       QString::fromStdString(ros::message_traits::datatype<sensor_msgs::Image>()),

@@ -119,7 +119,7 @@ private:
 
   ros::ServiceServer trigger_service_;
   bool triggerCallback(std_srvs::TriggerRequest& req, std_srvs::TriggerResponse& res);
-  bool trigger_activated_ = false;
+  bool trigger_activated_; 	/* init to false in the constructor. */
   ros::Time last_image_publication_time_ = ros::Time(0);
 
   void caminfoCallback(const sensor_msgs::CameraInfo::ConstPtr& msg);
@@ -151,7 +151,7 @@ private:
 
   bool force_render_ = false;
 
-  static inline int count_ = 0;
+  static int count_;
 
   uint32_t vis_bit_;
 
